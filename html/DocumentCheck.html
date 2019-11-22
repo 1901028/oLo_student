@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <link rel="stylesheet" type="text/css" href="../css/css.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="../js/proofreading.js"></script>
+<script type="text/javascript" src="../js/cloud_vision_api.js"></script>
 
     <span id="winsize2"></span>
     <script type="text/javascript">
@@ -18,29 +21,46 @@
         }
     </script>
 
-    <head>
-        <meta charset="UTF-8">
-        <title>文書チェック画面</title>
-    </head>
-    <body>
-        <br>
-        <center><h1>文書チェック</h1></center>
-        <div class="box1" align="center">
-            <p>ここに画像から読み込んだ文章が表示されます。</p>
-        </div>
-        <div class="box2" style="width:45%;
+<head>
+    <meta charset="UTF-8">
+    <title>文書チェック画面</title>
+</head>
+<body>
+<br>
+<center><h1>文書チェック</h1></center>
+<center><h1>文書チェックを行います</h1></center>
+
+<form>
+    <input type="file" onchange="fileget(this);">
+    <br>
+    <textarea id="main_text" name="post_sentence" rows="10" cols="60" placeholder="ここに写真から取り込んだテキストが入力されます"></textarea>
+    <input id="btnsend" type="button" value="送信">
+</form>
+
+<div class="box1" align="center">
+    <p>ここに画像から読み込んだ文章が表示されます。</p>
+    <span id="text_load"></span>
+</div>
+
+<!--<p>取得状況:<span id="span1"></span></p>-->
+
+<div class="box2" style="width:45%;
     height:730px;
     padding: 0.5em 1em;
     margin: 2em 0;
     font-weight: bold;
     border: solid 3px #000000;
     float: left;">
-            <center><p>アドバイスが表示されます。</p></center>
-        </div>
-        <img src="../png/job_hisyo_kochira.png" class="hisyo" style="position: absolute; left: 470px; top: 880px">
+    <center><p>アドバイスが表示されます。</p></center>
+    <p>入力した文章:<span id="text_input"></span></p><br><br>
+    <p>添削した文章:<span id="text_proofreading"></span></div></p>
+</div>
 
-        <center><a href="#" class="Dbtn-square" style="position: absolute; bottom: 0px; left: 400px;">画像を読み込む</a></center>
-    </body>
+<img src="../png/job_hisyo_kochira.png" class="hisyo" style="position: absolute; left: 470px; top: 880px">
+
+<!--<center><a href="#" class="Dbtn-square" style="position: absolute; bottom: 0px; left: 400px;">画像を読み込む</a></center>-->
+
+</body>
 
 
 </html>
